@@ -1,0 +1,461 @@
+.slds-card {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 120, 150, 0.1);
+    transition: all 0.3s ease;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.slds-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 120, 150, 0.2);
+}
+
+.header-section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #005f87;
+    text-align: center;
+    margin-bottom: 1.5rem !important;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 94, 135, 0.1);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.header-section h1:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #00a1df, #0076b6);
+    border-radius: 3px;
+}
+
+.template-container {
+    background: linear-gradient(135deg, #f5fafd 0%, #e0f2fb 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.weather-section {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 120, 150, 0.15);
+    border: none;
+    overflow: hidden;
+}
+
+.location-header h2 {
+    color: #0076b6;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.temperature-display {
+    font-size: 4rem;
+    font-weight: 300;
+    color: #005f87;
+    line-height: 1;
+    margin: 10px 0;
+    position: relative;
+}
+
+.temperature-display:after {
+    content: "°C";
+    font-size: 2rem;
+    position: relative;
+    top: -20px;
+    margin-left: 5px;
+}
+
+.weather-description {
+    font-size: 1.25rem;
+    color: #0076b6;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+
+.weather-details {
+    background-color: #f5fafd;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #005f87;
+}
+
+.detail-item lightning-icon {
+    margin-right: 8px;
+    background-color: #d8eef9;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.forecast-section {
+    background-color: #f5fafd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.section-title {
+    color: #005f87;
+    font-weight: 600;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.forecast-day {
+    padding: 10px;
+}
+
+.forecast-content {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    height: 100%;
+    box-shadow: 0 2px 6px rgba(0, 120, 150, 0.1);
+}
+
+.day-name {
+    color: #0076b6;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.temperature-range {
+    margin: 10px 0;
+}
+
+.high-temp {
+    color: #005f87;
+    font-weight: 600;
+}
+
+.low-temp {
+    color: #5a9bb9;
+}
+
+.weather-condition {
+    color: #5a9bb9;
+}
+
+.loading-container {
+    padding: 40px 0;
+}
+
+.error-container {
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.weather-icon-container {
+    margin: 15px 0;
+}
+
+.weather-icon {
+    --sds-c-icon-color-foreground-default: #0076b6;
+    --sds-c-icon-color-background: #e0f2fb;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: var(--sds-c-icon-color-background);
+}
+
+.forecast-icon {
+    --sds-c-icon-color-foreground-default: #5a9bb9;
+    margin: 10px 0;
+}
+
+.country-grid-container {
+    padding: 0 0.5rem;
+    margin: 1rem 0 2rem;
+}
+
+.country-grid {
+    margin: 0 -0.75rem;
+}
+
+.country-card-container {
+    padding: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.country-card h2 {
+    color: #005f87;
+    font-weight: 600;
+}
+
+.country-card {
+    cursor: pointer;
+    height: 100%;
+    border: 1px solid #d8eef9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background-color: white;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.country-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.country-card.selected {
+    border: 2px solid #0076b6;
+    box-shadow: 0 0 0 1px #0076b6;
+}
+
+.country-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--color1), var(--color2), var(--color3));
+}
+
+.country-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+}
+
+.country-code {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.region-badge {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .country-card-container {
+        padding: 0.5rem;
+    }
+    
+    .country-name {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .country-card-container {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+        height: 125px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .country-card-container {
+        flex: 0 0 50%;
+        max-width: 50%;
+        height: 125px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .country-grid {
+        justify-content: center;
+    }
+    
+    .country-card-container {
+        flex: 0 0 30%;
+        max-width: 30%;
+        padding: 1rem;
+    }
+}
+
+.argentina-flag::after {
+    background: linear-gradient(90deg, #75AADB 33%, #FFFFFF 33%, #FFFFFF 66%, #75AADB 66%);
+}
+
+.brazil-flag::after {
+    background: linear-gradient(135deg, #009B3A 0%, #FEDF00 50%, #002776 100%);
+}
+
+.chile-flag::after {
+    --color1: #0039A6;
+    --color2: #FFFFFF;
+    --color3: #D52B1E;
+    background: linear-gradient(90deg, #0039A6 33%, #FFFFFF 33%, #FFFFFF 66%, #D52B1E 66%);
+}
+
+.colombia-flag::after {
+    --color1: #FCD116;
+    --color2: #003893;
+    --color3: #CE1126;
+    background: linear-gradient(90deg, #FCD116 33%, #003893 33%, #003893 66%, #CE1126 66%);
+}
+
+.ecuador-flag::after {
+    --color1: #FFD100;
+    --color2: #0057B8;
+    --color3: #EF3340;
+    background: linear-gradient(90deg, #FFD100 33%, #0057B8 33%, #0057B8 66%, #EF3340 66%);
+}
+
+.peru-flag::after {
+    --color1: #D91023;
+    --color2: #FFFFFF;
+    --color3: #D91023;
+    background: linear-gradient(90deg, #D91023 33%, #FFFFFF 33%, #FFFFFF 66%, #D91023 66%);
+}
+
+.uruguay-flag::after {
+    --color1: #0038A8;
+    --color2: #FFFFFF;
+    background: linear-gradient(90deg, #0038A8 25%, #FFFFFF 25%, #FFFFFF 30%, #0038A8 30%, 
+                              #0038A8 45%, #FFFFFF 45%, #FFFFFF 50%, #0038A8 50%, 
+                              #0038A8 65%, #FFFFFF 65%, #FFFFFF 70%, #0038A8 70%, 
+                              #0038A8 85%, #FFFFFF 85%, #FFFFFF 90%, #0038A8 90%);
+}
+
+.venezuela-flag::after {
+    --color1: #EF3340;
+    --color2: #0038A8;
+    --color3: #FFD100;
+    background: linear-gradient(90deg, #EF3340 33%, #0038A8 33%, #0038A8 66%, #FFD100 66%);
+}
+
+.bolivia-flag::after {
+    --color1: #007934;
+    --color2: #F9E300;
+    --color3: #D52B1E;
+    background: linear-gradient(90deg, #007934 33%, #F9E300 33%, #F9E300 66%, #D52B1E 66%);
+}
+
+.paraguay-flag::after {
+    --color1: #D52B1E;
+    --color2: #FFFFFF;
+    --color3: #0038A8;
+    background: linear-gradient(90deg, #D52B1E 33%, #FFFFFF 33%, #FFFFFF 66%, #0038A8 66%);
+}
+
+.subtitle-container {
+    margin: 0.5rem 0 2rem 0;
+    text-align: center;
+}
+
+.elegant-subtitle {
+    position: relative;
+    display: inline-block;
+    font-family: 'Montserrat', 'Salesforce Sans', Arial, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: #0076b6;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    margin: 0;
+}
+
+.subtitle-text {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(135deg, #0076b6 0%, #00a1df 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 118, 182, 0.1);
+}
+
+.elegant-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #0076b6, #00a1df);
+    border-radius: 3px;
+    z-index: 1;
+}
+
+.elegant-subtitle:hover .subtitle-text {
+    animation: textGlow 1.5s ease-in-out infinite alternate;
+}
+
+.elegant-subtitle:hover::after {
+    animation: underlineExpand 0.5s ease-out forwards;
+}
+
+@keyframes textGlow {
+    from {
+        text-shadow: 0 0 5px rgba(0, 161, 223, 0.3);
+    }
+    to {
+        text-shadow: 0 0 10px rgba(0, 161, 223, 0.6), 0 0 20px rgba(0, 161, 223, 0.3);
+    }
+}
+
+@keyframes underlineExpand {
+    0% {
+        width: 80px;
+    }
+    100% {
+        width: 120px;
+    }
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading-content {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dddbda;
+}
+
+.loading-text {
+    font-size: 1.25rem;
+    color: #3e3e3c;
+    font-weight: 500;
+}
+
+.slds-spinner_large {
+    width: 4rem;
+    height: 4rem;
+}
+
+.slds-spinner_large .slds-spinner__dot-a,
+.slds-spinner_large .slds-spinner__dot-b {
+    width: 1rem;
+    height: 1rem;
+}
+
+

@@ -1,0 +1,132 @@
+<template>
+    <div class="template-container">
+        <lightning-card title="New Millennium Tourism - Weather Information" icon-name="utility:travel">
+            <div class="slds-p-around_medium">
+                <div class="header-section slds-m-bottom_large">
+                    <h1 class="company-title">New Millennium Tourism</h1>
+                    <div class="subtitle-container">
+                        <p class="elegant-subtitle">
+                            <span class="subtitle-text">Discover your perfect destination</span>
+                            <span class="subtitle-decoration"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="country-grid-container">
+                    <div class="country-grid slds-grid slds-wrap">
+                        <template for:each={decoratedDestinations} for:item="dest">
+                            <div key={dest.name} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 country-card-container">
+                                <div class={dest.cardClass} 
+                                     onclick={handleCountrySelection} 
+                                     data-name={dest.name}
+                                     data-country={dest.country}>
+                                    <div class="slds-card__header slds-grid">
+                                        <div class="slds-media slds-media_center">
+                                            <div class="slds-media__figure">
+                                                <lightning-icon icon-name="utility:world" size="small"></lightning-icon>
+                                            </div>
+                                            <div class="slds-media__body">
+                                                <h2 class="country-name">{dest.name}</h2>
+                                                <p class="country-code">{dest.country}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-card__body">
+                                        <span class="slds-badge region-badge slds-theme_{getRegionTheme(dest.region)}">
+                                            {dest.region}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <template if:true={selectedDestination}>
+                    <div class="weather-section slds-box slds-theme_default slds-m-top_large">
+                        <div class="location-header slds-grid slds-align_absolute-center slds-m-bottom_medium">
+                            <div class="slds-media slds-media_center">
+                                <lightning-icon icon-name="utility:location" size="small" class="slds-m-right_x-small location-icon"></lightning-icon>
+                                <div class="slds-media__body">
+                                    <h2 class="location-title">{selectedDestination}, {selectedCountry}</h2>
+                                    <p class="slds-text-body_small slds-text-color_weak">Current Weather</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="current-weather slds-grid slds-wrap slds-p-around_medium">
+                            <div class="main-weather slds-col slds-size_1-of-1 slds-text-align_center">
+                                <div class="weather-icon-container">
+                                    <lightning-icon icon-name={currentWeatherIcon} size="large" class="weather-icon"></lightning-icon>
+                                </div>
+                                <div class="temperature-display slds-text-heading_large">
+                                    {currentWeather.temp}
+                                </div>
+                                <div class="weather-description slds-text-title">{currentWeather.description}</div>
+                            </div>
+
+                            <div class="weather-details slds-col slds-size_1-of-1 slds-m-top_medium">
+                                <div class="slds-grid slds-wrap slds-gutters">
+                                    <div class="detail-item slds-col slds-size_1-of-2 slds-medium-size_1-of-4">
+                                        <lightning-icon icon-name="utility:thermometer" size="small"></lightning-icon>
+                                        <span>Feels Like: {currentWeather.feelsLike}°C</span>
+                                    </div>
+                                    <div class="detail-item slds-col slds-size_1-of-2 slds-medium-size_1-of-4">
+                                        <lightning-icon icon-name="utility:wind" size="small"></lightning-icon>
+                                        <span>Wind: {currentWeather.windSpeed} km/h</span>
+                                    </div>
+                                    <div class="detail-item slds-col slds-size_1-of-2 slds-medium-size_1-of-4">
+                                        <lightning-icon icon-name="utility:droplet" size="small"></lightning-icon>
+                                        <span>Humidity: {currentWeather.humidity}%</span>
+                                    </div>
+                                    <div class="detail-item slds-col slds-size_1-of-2 slds-medium-size_1-of-4">
+                                        <lightning-icon icon-name="utility:barometer" size="small"></lightning-icon>
+                                        <span>Pressure: {currentWeather.pressure} hPa</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="forecast-section slds-m-top_large">
+                            <h3 class="section-title slds-text-heading_small slds-border_bottom">
+                                <lightning-icon icon-name="utility:forecast" size="small" class="slds-m-right_x-small"></lightning-icon>
+                                5-Day Forecast
+                            </h3>
+                            <div class="forecast-grid slds-grid slds-wrap">
+                                <template for:each={dailyForecast} for:item="day">
+                                    <div key={day.day} class="forecast-day slds-col slds-size_1-of-2 slds-medium-size_1-of-5">
+                                        <div class="forecast-content slds-text-align_center">
+                                            <div class="day-name slds-text-title_caps">{day.day}</div>
+                                            <lightning-icon icon-name={day.icon} size="medium" class="forecast-icon"></lightning-icon>
+                                            <div class="temperature-range slds-grid slds-grid_align-spread">
+                                                <span class="high-temp">{day.temp.max}°</span>
+                                                <span class="low-temp">{day.temp.min}°</span>
+                                            </div>
+                                            <div class="weather-condition slds-text-body_small">{day.description}</div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <template if:true={isLoading}>
+                    <div class="loading-overlay">
+                        <div class="loading-content">
+                            <lightning-spinner alternative-text="Loading weather data" size="large" variant="brand"></lightning-spinner>
+                            <div class="loading-text slds-m-top_medium">Fetching weather data...</div>
+                        </div>
+                    </div>
+                </template>
+
+                <template if:true={error}>
+                    <div class="error-container slds-notify slds-notify_alert slds-theme_error slds-m-top_medium">
+                        <lightning-icon icon-name="utility:error" size="small" class="slds-m-right_x-small"></lightning-icon>
+                        <span>{error}</span>
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+    </div>
+</template>
